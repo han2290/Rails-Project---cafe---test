@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaverCafe</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!--Bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://getbootstrap.com/docs/4.1/examples/album/album.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--Bootstrap_sticky footer-->
+    <link href="http://getbootstrap.com/docs/4.1/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+    <%=render "shared/nav" %>
+    
+    <% flash.each do |k, v| %>
+      <div class = "alert alert-<%= k %>"><%= v %></div>
+    <%end%>
+    
+    <div class = "container">
+      <%= yield %>
+    </div>
+    
+    <%=render "shared/footer" %>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<%= form_for(post) do |f| %>
+  <!--, html: {class: 'text-center'}-->
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contents %>
+    <%= f.text_area :contents, class: 'form-control' %>
+    <!--이게 자동으로 에디트와 뉴에 맞춰서 도와주나?-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit '작성하기', class: 'btn btn-info'%>
+    <%= link_to '뒤로가기', posts_path, class: 'btn btn-warning text-white'%>
+  </div>
+<% end %>

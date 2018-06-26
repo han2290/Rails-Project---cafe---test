@@ -1,0 +1,15 @@
+
+<h1>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</h1>
+<hr>
+
+<p>
+  <strong>Contents:</strong>
+  <%= @post.contents %>
+</p>
+
+<%= link_to '수정', edit_post_path(@post) , class: 'btn btn-warning text-white'%> |
+<%= link_to '목록', posts_path, class: 'btn btn-info' %>
+<%= link_to '삭제', post_path(@post), method: 'delete', class: 'btn btn-danger'%>
