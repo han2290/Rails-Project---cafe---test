@@ -1,0 +1,4 @@
+<%= form_tag("/posts/#{post.id}/comments/create", method: "POST") do%> 
+    <%= text_field_tag(:content, nil, class: "form-control",  placeholder: "덧글을 남겨주세요") %>
+    <%= submit_tag("확인")%>
+<% end %>

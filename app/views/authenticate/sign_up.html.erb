@@ -1,0 +1,9 @@
+<%= form_tag do %> 
+
+    <!--@user가 비어있냐 아니냐에 따라 매칭을 해준다.-->
+    <%= text_field_tag :user_name %><br>
+    <%= password_field_tag :password %><br>
+    <%= password_field_tag :password_confirmation %><br>
+    <%= submit_tag 'sign_up' %>
+
+<% end %>

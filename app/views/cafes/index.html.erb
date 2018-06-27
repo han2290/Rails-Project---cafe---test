@@ -1,0 +1,9 @@
+<h1>Naver Cafe</h1>
+
+<hr>
+<div class="list-group">
+    <% @cafes.each do |cafe| %>
+        <%= link_to cafe.title, cafe_path(cafe), class: "list-group-item list-group-item-action disabled" %>
+    <% end %>
+</div>
+<%= link_to "카페 생성", new_cafe_path, class: "btn btn-info"%>
