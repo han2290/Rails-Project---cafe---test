@@ -4,4 +4,9 @@ class Naver < ApplicationRecord
     
     has_many :posts
     
+    def is_member?(user)
+        self.users.include?(user)
+    end
+    
+    
 end

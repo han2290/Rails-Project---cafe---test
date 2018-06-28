@@ -4,7 +4,7 @@
 <small><%= @cafe.description%></small>
 <hr>
 
-<!--카페 가입버튼-->
+<!--카페 가입버튼 -->
 <%= link_to "가입하기", join_cafe_path(@cafe), method: "POST" ,class: "btn btn-warning"%>
 <ul class="list-group">
   <% @cafe.posts.each do |post| %>

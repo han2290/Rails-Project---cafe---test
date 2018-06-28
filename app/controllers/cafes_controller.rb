@@ -13,7 +13,7 @@ class CafesController < ApplicationController
     #카페를 보여주는 show 페이지
     def show
         @cafe = Naver.find(params[:id])
-        #session[:current_cafe] = @cafe.id
+        session[:current_cafe] = @cafe.id
     end
     
     #카페를 개설하는 페이지
@@ -32,13 +32,32 @@ class CafesController < ApplicationController
             
             redirect_to cafes_path, flash: {success: "카페 생성 성공"}
         else
+            p @cafe.errors
             redirect_to :back, flash: {warning: "카페 생성 실패"}
         end
     end
     
     def join_cafe
-        Membership.create(naver_id: params[:cafe_id], user_id: current_user.id)
-        redirect_to :back, flash: {success: "카페 가입 성공"}
+        # 카페 막아주기
+        # 1. 가입버튼 안보이게 하기
+        # 2. 중복 가입 체크 후 진행 -> 모델에 조건 추가
+        cafe = Naver.find(params[:cafe_id])
+        #사용자가 가입하려는 카페
+        
+        if cafe.is_member?(current_user)
+            #가입실패
+            redirect_to :back, flash: {danger: "카페 가입 실패"}
+        else
+            #가입성공
+            Membership.create(naver_id: params[:cafe_id], user_id: current_user.id)
+            redirect_to :back, flash: {success: "카페 가입 성공"}
+        end
+        
+        
+        
+        
+        
+        
     end
     
     
@@ -56,6 +75,7 @@ class CafesController < ApplicationController
     
     def naver_params
         params.require(:naver).permit(:title, :description)
+        #, :naver_id
     end
     
 end

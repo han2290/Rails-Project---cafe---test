@@ -13,8 +13,13 @@ class AuthenticateController < ApplicationController
                         password_confirmation: params[:confirmation])
         
         if @user.save
+            
+            
             redirect_to root_path, flash: {success: '회원가입 성공'}
         else
+            puts "에러---------"
+            p @user.errors
+            puts "여기까지---------"
             redirect_to :back, flash: {success: '회원가입 실패'}
         end
         
